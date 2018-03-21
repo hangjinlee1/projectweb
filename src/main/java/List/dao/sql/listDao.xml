@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ListDao">
+	<select id="selectAll" parameterType="ListVO">
+		SELECT	ID,
+				TITLE,
+				BODY,
+				USER_ID,
+				WRITE_DATE,
+		FROM	COMMUNITY C,
+		ORDER	BY C.ID DESC
+	</select>
+	<insert id="insertList" parameterType="ListVO">
+		INSERT	INTO COMMUNITY
+				(
+				ID
+				, TITLE
+				, WRITEDATE
+				, UPLOADER
+				, BODY
+				, USER_ID
+				)
+				VALUES
+				(
+				COMMUNITY_ID_SEQ_NEXTVAL
+				, #{title}
+				, SYSDATE
+				, #{uploader}
+				, #{body}
+				, #{userId}
+				)
+				
+				
+	</insert>
+</mapper>
